@@ -32,7 +32,8 @@ interface RegionData {
 // ─── Loader ───────────────────────────────────────────────────────────────────
 
 export async function loader(): Promise<RegionData> {
-  const res = await fetch("/indonesia-regions-filter/data/indonesia_regions.json");
+  const base = import.meta.env.BASE_URL;
+  const res = await fetch(`${base}data/indonesia_regions.json`);
   if (!res.ok) throw new Error("Failed to load region data.");
   return res.json();
 }
